@@ -1,0 +1,41 @@
+#!/bin/sh
+# -------------------------------------------------------------------------
+# vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=75    :
+# -------------------------------------------------------------------------
+# This script is used to define common aliases for shell commands.        :
+# -------------------------------------------------------------------------
+# Mathias J. Hennig wrote this file. As long as you retain this notice    :
+# you can do whatever you want with this stuff. If we meet some day, and  :
+# you think this stuff is worth it, you can buy me a beer in return.      :
+# -------------------------------------------------------------------------
+
+# A function to extend aliases if they exist already, or create new ones
+# in case they don't. Note that this may create aliases with arguments that
+# occur multiple times!
+_alias_extend() {
+	NAME=$1; shift
+    TOOL=$1; shift
+	if [ -z "`alias $NAME 2>/dev/null`" ]; then
+		alias "$NAME=$TOOL $@"
+	else
+		eval `alias "$NAME" | sed "s/'\$/ $@'/"`
+	fi
+}
+
+# The following section is used to let ls(1) show sub-directories before
+# files, if that feature is supported:
+if ls --group-directories-first >/dev/null 2>&1; then
+    _alias_extend ls ls --group-directories-first
+fi
+
+# Some people like the following aliases for ls(1):
+_alias_extend ll ls -l
+_alias_extend la ls -A
+
+# Many people prefer to get prompted for confirmation before e.g. deleting
+# or replacing files, unless disabling that feature explicitely:
+_alias_extend mv mv -i
+_alias_extend cp cp -i
+_alias_extend ln ln -i
+_alias_extend rm rm -i
+

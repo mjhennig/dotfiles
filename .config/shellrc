@@ -1,0 +1,27 @@
+#!/bin/sh
+# -------------------------------------------------------------------------
+# vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=75    :
+# -------------------------------------------------------------------------
+# This script is used to delegate the definition of aliases, functions    :
+# and environvent variables to the scripts in the $SHELL_CONFIG_DIR.      :
+# It allows a much more flexible approach when customizing the shell and  :
+# it's environment, especially because it allows the defintition of host- :
+# specific operations in their own files, beside common ones.             :
+# -------------------------------------------------------------------------
+# Mathias J. Hennig wrote this file. As long as you retain this notice    :
+# you can do whatever you want with this stuff. If we meet some day, and  :
+# you think this stuff is worth it, you can buy me a beer in return.      :
+# -------------------------------------------------------------------------
+
+# If $SHELL_CONFIG_DIR is empty, use the default path:
+if [ -z "$SHELL_CONFIG_DIR" ]; then
+    SHELL_CONFIG_DIR="$HOME/.config/shell.d"
+fi
+
+# Source the files in $SHELL_CONFIG_DIR This is done with "eval" rather
+# than a real "source" command, in order to avoid quirks with older shells,
+# especially an older bash(1)
+eval "`find "$SHELL_CONFIG_DIR" \
+    -mindepth 1 -maxdepth 1 -not -type d \
+|   xargs cat`"
+

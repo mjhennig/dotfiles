@@ -1,0 +1,7 @@
+# There is no need to track any .dotfiles unless they've been added to the
+# repository explicitely
+.*
+
+# There is also no need to track the Public share folder
+Public/
+

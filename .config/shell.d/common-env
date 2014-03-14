@@ -1,0 +1,52 @@
+#!/bin/sh
+# -------------------------------------------------------------------------
+# vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4 textwidth=75    :
+# -------------------------------------------------------------------------
+# This script is used to map environvent variables prefixed with LC_X* to :
+# their counterparts, e.g. LC_XEDITOR to EDITOR, if the named executabe   :
+# exists.                                                                 :
+# This is useful to e.g. share an account between mutliple users, but     :
+# provide slight customization options: Most sshd(8) configurations, for  :
+# example, white-list environment variables that begin with LC_* ...      :
+# -------------------------------------------------------------------------
+# Mathias J. Hennig wrote this file. As long as you retain this notice    :
+# you can do whatever you want with this stuff. If we meet some day, and  :
+# you think this stuff is worth it, you can buy me a beer in return.      :
+# -------------------------------------------------------------------------
+
+# If the $LC_XINPUT variable is set, the following section will attempt
+# to pass it to "set -o". This is usefull to let the input prompt of e.g.
+# ksh(1) and bash(1) behave like either "vi" or "emacs":
+if [ ! -z "$LC_XINPUT" ]; then
+    set -o "$LC_XINPUT" >/dev/null 2>&1
+fi
+
+# If the $LC_XEDITOR variable is set, and if it names an executable in 
+# $PATH, set the $EDITOR variable accordingly. Note that if $LC_XEDITOR
+# is set to "vim" but there is no vim(1) available, this will fall-back
+# to "vi":
+case "$LC_XEDITOR" in
+    vim) for EDITOR in vim vi; do
+        if which "$EDITOR" >/dev/null 2>&1; then
+            EDITOR="`which \"$EDITOR\"`"
+            export EDITOR
+            break
+        fi; done;;
+    *)  if which "$LC_XEDITOR" >/dev/null 2>&1; then
+            EDITOR="`which \"$LC_XEDITOR\"`"
+            export EDITOR
+        fi;;
+esac
+
+# If the $LC_XPAGER" variable is set, and if it names an executable in
+# $PATH, set the $PAGER variable accordingly. If $LC_XPAGER is either
+# unavailabe or empty, and $PAGER is not set yet, attempt to use less(1)
+# instead:
+if which "$LC_XPAGER" >/dev/null 2>&1; then
+    PAGER="`which \"$LC_XPAGER\"`"
+    export PAGER
+elif [ -z "$PAGER" ] && which less >/dev/null 2>&1; then
+    PAGER="`which less`"
+    export PAGER
+fi
+

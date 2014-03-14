@@ -2,6 +2,7 @@
 # repository explicitely
 .*
 
-# There is also no need to track the Public share folder
+# There is also no need to track the Backup or Public share folder
+Backup/
 Public/
 

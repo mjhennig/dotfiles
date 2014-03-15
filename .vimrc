@@ -42,6 +42,9 @@ hi ColorColumn none ctermbg=black guibg=black
 hi CursorLine none cterm=bold gui=bold
 hi CursorColumn none cterm=bold gui=bold
 
+au! BufReadPost *.go set filetype=go
+au! BufNewFile  *.go set filetype=go
+
 au! BufWritePost .vimrc source %
 
 map! OH <ESC>0i

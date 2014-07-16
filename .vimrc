@@ -19,7 +19,6 @@ set nocindent
 set nocompatible
 set nocursorcolumn
 set nocursorline
-set noexpandtab
 set nolist
 set nospell
 set noswapfile

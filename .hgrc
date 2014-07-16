@@ -1,0 +1,7 @@
+[ui]
+username = Matze <mathias@adblockplus.org>
+ignore = ~/.config/hgignore
+
+[extensions]
+hgk =
+

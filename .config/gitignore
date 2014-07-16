@@ -1,0 +1,6 @@
+# Mercurial repositories (http://mercurial.selenic.com/)
+.hg
+
+# Vagrant files (http://vagrantup.com/)
+.vagrant
+

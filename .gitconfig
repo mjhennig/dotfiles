@@ -1,0 +1,7 @@
+[user]
+	name = Mathias J. Hennig
+	email = mathias@adblockplus.org
+
+[core]
+	excludesfile = ~/.config/gitignore
+

@@ -1,5 +1,6 @@
 # Mercurial repositories (http://mercurial.selenic.com/)
 .hg
+.hgignore
 
 # Vagrant files (http://vagrantup.com/)
 .vagrant

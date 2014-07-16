@@ -1,5 +1,6 @@
 # Git repositories (http://git-scm.com/)
 .git
+.gitignore
 
 # Vagrant files (http://vagrantup.com/)
 .vagrant

@@ -165,3 +165,6 @@ bindsym $mod+g exec galculator
 # optics
 new_window normal
 
+# Auto-run script
+exec 'test -x ~/.i3/bootstrap && ~/.i3/bootstrap'
+

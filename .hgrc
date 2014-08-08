@@ -4,4 +4,6 @@ ignore = ~/.config/hgignore
 
 [extensions]
 hgk =
+strip =
+
 

@@ -33,6 +33,7 @@ set softtabstop=4
 set tabstop=4
 set tags+=tags;/
 set textwidth=80
+set colorcolumn=-4
 
 colorscheme default
 
@@ -40,6 +41,7 @@ hi Normal ctermbg=black guibg=black ctermfg=white guifg=white
 hi ColorColumn none ctermbg=black guibg=black
 hi CursorLine none cterm=bold gui=bold
 hi CursorColumn none cterm=bold gui=bold
+hi ColorColumn ctermbg=red guibg=red
 
 au! BufReadPost *.go set filetype=go
 au! BufNewFile  *.go set filetype=go

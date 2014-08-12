@@ -33,7 +33,7 @@ set softtabstop=4
 set tabstop=4
 set tags+=tags;/
 set textwidth=80
-set colorcolumn=-4
+set colorcolumn=-4,-3,-2,-1,+0
 
 colorscheme default
 

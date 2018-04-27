@@ -1,0 +1,4 @@
+split-window
+select-layout even-horizontal                                                  
+select-pane -L
+resize-pane -x 84

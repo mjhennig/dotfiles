@@ -1,4 +1,2 @@
-# There is no need to track any .dotfiles unless they've been added to the
-# repository explicitely
-.*
-
+# There is no need to track any files unless they've been added explicitly
+*
